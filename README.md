@@ -1,15 +1,53 @@
 # Electricity-Game-2
 <!DOCTYPE html>
 <html>
+<head>
+<script>
+function validateForm() {
+    var name = document.forms["myForm"]["fname"].value;
+    if (name == "") {
+        alert("Name must be filled out");
+
+    } else {
+    	alert ("name is " + name); 
+    	ask_a_question("do you want to take the electricity quiz?","y");
+    }
+    return false;
+}
+function ask_a_question( q, a ){
+	document.getElementById('quizquestions').innerHTML = q;
+}
+
+function checkQuizQuestion(){
+   var answer = document.forms["quizForm"]["quizAnswer"].value;
+   if (answer == "") {
+        alert("Answer must be filled out");
+ 
+    } else {
+    	alert ("your answer is " + answer); 
+    }
+    return false;
+}
+
+function checkQuizQuestion()
+</script>
+</head>
 <body>
 
-<h2>My First JavaScript</h2>
+<form name="myForm" action="/action_page.php"
+onsubmit="return validateForm()" method="post">
+Name: <input type="text" name="fname">
+<input type="submit" value="Submit">
+</form>
 
-<button type="button"
-onclick="document.getElementById('demo').innerHTML = 'We are going to take the electricity quiz!'">
-Click me to take this quiz</button>
-
-<p id="demo"></p>
+<h3>Here is a quiz question</h3>
+<p id="quizquestions"></p>
+<h3>Enter an answer</h3>
+<form name="quizForm" action="/action_page.php"
+onsubmit="return checkQuizQuestion()" method="get">
+answer: <input type="text" name="quizAnswer">
+<input type="submit" value="Submit">
+</form>
 
 </body>
-</html> 
+</html>
